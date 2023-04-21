@@ -34,33 +34,23 @@ namespace MDE_2.Code
         }
         private void DeserializeThemeList()
         {
+            string folderPath = @"Themes";
             try
             {
-                string folderPath = @"Themes";
                 string[] jsonFiles = Directory.GetFiles(folderPath, "*.json");
-                MessageBox.Show($"Количество файлов с расширением .json: {jsonFiles.Length}");
-
                 foreach (string jsonFile in jsonFiles)
                 {
-
                     string fileName = Path.GetFileName(jsonFile);
                     Themes.Add(Theme.DeserializeTheme(@"Themes\" + fileName));
-                    Reporter.Log("Theme deserialised");
                 }
             }
-            catch (Exception ex)
-            {
-                Reporter.Log("Error: "+ex.Message);
-            }
+            catch (Exception ex) { Reporter.Log("Error: "+ex.Message);}
         }
         
         public void SerializeThemeList()
-        {
+        { 
             foreach (Theme theme in Themes)
-            {
                 theme.SerializeTheme();
-            }
-            MessageBox.Show("serialized");
         }
     }
 }

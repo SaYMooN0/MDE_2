@@ -5,8 +5,43 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MDE_2"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" >
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Code\Styles\ButtonStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
     <Canvas x:Name="MainCanvas">
+        <Grid x:Name="CenterGrid"
+              HorizontalAlignment="Center"
+              VerticalAlignment="Center"
+              Width="200">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Button x:Name="Button1"
+                    Grid.Row="0"
+                    Style="{StaticResource ButtonStyle}"
+                    Content="Кнопка 1"
+                    HorizontalAlignment="Stretch"
+                    Margin="0,0,0,10"/>
 
+            <Button x:Name="Button2"
+                    Grid.Row="1"
+                    Style="{StaticResource ButtonStyle}"
+                    Content="Кнопка 2"
+                    HorizontalAlignment="Stretch"
+                    Margin="0,0,0,10"/>
+
+            <Button x:Name="Button3"
+                    Grid.Row="2"
+                    Style="{StaticResource ButtonStyle}"
+                    Content="Кнопка 3"
+                    HorizontalAlignment="Stretch"/>
+        </Grid>
     </Canvas>
 </Window>
