@@ -8,13 +8,19 @@ namespace MDE_2.Code
 {
     static class Reporter
     {
-        public static async void Log(string str)
+        static private string FilePath { get; set; }
+        public static void Log(string str)
         {
-            byte[] buffer = Encoding.Default.GetBytes(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "\n" + str);
-            using (FileStream fstream = new FileStream("log.txt", FileMode.OpenOrCreate))
+            using (FileStream fstream = new FileStream(FilePath, FileMode.Append))
             {
-                await fstream.WriteAsync(buffer, 0, buffer.Length);
+                byte[] buffer = Encoding.Default.GetBytes(DateTime.Now.ToString("HH:mm:ss") + "\n" + str);
+                fstream.Write(buffer, 0, buffer.Length);
             }
+        }
+        public static void CreateFile()
+        {
+            FilePath= "Logs\\log" + DateTime.Now.ToString("ss-mm-HH-dd-MM-yyy") + ".txt";
+            using (FileStream fstream = new FileStream(FilePath, FileMode.Create)){}
         }
     }
 }
