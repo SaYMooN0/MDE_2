@@ -11,11 +11,15 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Code\Styles\ButtonStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="TextBlock">
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="FontFamily" Value="Corbel"/>
+            </Style>
         </ResourceDictionary>
     </Window.Resources>
     <Canvas x:Name="Screen">
     <Canvas x:Name="MainPage">
-        <Grid x:Name="CenterGrid">
+            <Grid x:Name="CenterGrid" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
@@ -26,63 +30,60 @@
             Style="{StaticResource ButtonStyle}"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Stretch"
-            Margin="0,0,0,8"
             Click="DevelopBTN_Click">
-                    <Grid >
+                    <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
+                            <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <Image Source="Images/Icons/Run.png"
-                           HorizontalAlignment="Left" VerticalAlignment="Center"
-                           Stretch="Uniform" Margin="8 4"/>
-                        <TextBlock Grid.Column="1" Text="Develop" VerticalAlignment="Center"/>
+                   HorizontalAlignment="Left" VerticalAlignment="Center"
+                   Stretch="Uniform" Margin="8 4"/>
+                        <TextBlock Grid.Column="1" Text="Develop" VerticalAlignment="Center" FontSize="{Binding ElementName=DevelopBTN, Path=FontSize}" />
                     </Grid>
                     <Button.HorizontalContentAlignment>Stretch</Button.HorizontalContentAlignment>
                     <Button.VerticalContentAlignment>Stretch</Button.VerticalContentAlignment>
                 </Button>
                 <Button x:Name="HistoryBTN"
-           Grid.Row="1"
+            Grid.Row="1"
             Style="{StaticResource ButtonStyle}"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Stretch"
-            Margin="0,0,0,8"
             Click="HistoryBTN_Click">
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
+                            <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <Image Source="Images/Icons/History.png"
-                           HorizontalAlignment="Left" VerticalAlignment="Center"
-                           Stretch="Uniform" Margin="8 4"/>
-                        <TextBlock Grid.Column="1" Text="History" VerticalAlignment="Center"/>
+                   HorizontalAlignment="Left" VerticalAlignment="Center"
+                   Stretch="Uniform" Margin="8 4"/>
+                        <TextBlock Grid.Column="1" Text="History" VerticalAlignment="Center" FontSize="{Binding ElementName=HistoryBTN, Path=FontSize}"/>
                     </Grid>
                     <Button.HorizontalContentAlignment>Stretch</Button.HorizontalContentAlignment>
                     <Button.VerticalContentAlignment>Stretch</Button.VerticalContentAlignment>
                 </Button>
                 <Button x:Name="SettinsBTN"
-                Grid.Row="2"
-                Style="{StaticResource ButtonStyle}"
-                HorizontalAlignment="Stretch"
-                VerticalAlignment="Stretch"
-                Margin="0,0,0,8"
-                Click="SettinsBTN_Click">
+            Grid.Row="2"
+            Style="{StaticResource ButtonStyle}"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            Click="SettinsBTN_Click">
                     <Grid >
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition />
+                            <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <Image Source="Images/Icons/Settings.png"
-                           HorizontalAlignment="Left" VerticalAlignment="Center"
-                           Stretch="Uniform" Margin="8 4"/>
-                        <TextBlock Grid.Column="1" Text="Settings" VerticalAlignment="Center"/>
+                   HorizontalAlignment="Left" VerticalAlignment="Center"
+                   Stretch="Uniform" Margin="8 4"/>
+                        <TextBlock Grid.Column="1" Text="Settings" VerticalAlignment="Center" FontSize="{Binding ElementName=SettinsBTN, Path=FontSize}" />
                     </Grid>
                     <Button.HorizontalContentAlignment>Stretch</Button.HorizontalContentAlignment>
                     <Button.VerticalContentAlignment>Stretch</Button.VerticalContentAlignment>
                 </Button>
             </Grid>
-    </Canvas>
+        </Canvas>
         <Canvas x:Name="DevelopPage" Visibility="Hidden">
 
         </Canvas>
