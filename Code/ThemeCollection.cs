@@ -11,16 +11,33 @@ namespace MDE_2.Code
     class ThemeCollection
     {
         List<Theme> Themes;
+        public Theme CurrentTheme { get; private set; }
         public ThemeCollection()
         {
             Themes = new List<Theme>();
             DeserializeThemeList();
             if (Themes.Count > 0)
+            {
+                SetCurrentTheme(Settings.ChosenTheme);
                 return;
+            }
             Theme DefaultDark = new Theme("Default_Dark", "#1E1E1E");
             Themes.Add(DefaultDark);
             Theme DefaultLight = new Theme("Default_Light", "#1A1A1A");
             Themes.Add(DefaultLight);
+            SetCurrentTheme(Settings.ChosenTheme);
+        }
+        public void SetCurrentTheme(string themeName)
+        {
+            foreach (var theme in Themes)
+            {
+                if (theme.Name == themeName)
+                {
+                    CurrentTheme= theme;
+                    return;
+                }
+            }
+            Reporter.Log("ERROR: SetCurrentTheme:\nTheme with this name not found");
         }
         public override string ToString()
         {

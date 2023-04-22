@@ -23,25 +23,28 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Button x:Name="Button1"
+            <Button x:Name="DevelopBTN"
                     Grid.Row="0"
                     Style="{StaticResource ButtonStyle}"
                     Content="Кнопка 1"
                     HorizontalAlignment="Stretch"
-                    Margin="0,0,0,10"/>
+                    Margin="0,0,0,10"
+                    Click="DevelopBTN_Click"/>
 
-            <Button x:Name="Button2"
+            <Button x:Name="SettinsBTN"
                     Grid.Row="1"
                     Style="{StaticResource ButtonStyle}"
                     Content="Кнопка 2"
                     HorizontalAlignment="Stretch"
-                    Margin="0,0,0,10"/>
+                    Margin="0,0,0,10"
+                    Click="SettinsBTN_Click"/>
 
-            <Button x:Name="Button3"
+            <Button x:Name="AboutBTN"
                     Grid.Row="2"
                     Style="{StaticResource ButtonStyle}"
                     Content="Кнопка 3"
-                    HorizontalAlignment="Stretch"/>
+                    HorizontalAlignment="Stretch"
+                    Click="AboutBTN_Click"/>
         </Grid>
     </Canvas>
 </Window>

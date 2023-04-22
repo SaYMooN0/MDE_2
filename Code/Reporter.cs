@@ -13,7 +13,7 @@ namespace MDE_2.Code
         {
             using (FileStream fstream = new FileStream(FilePath, FileMode.Append))
             {
-                byte[] buffer = Encoding.Default.GetBytes(DateTime.Now.ToString("HH:mm:ss") + "\n" + str);
+                byte[] buffer = Encoding.Default.GetBytes("\n"+DateTime.Now.ToString("HH:mm:ss") + "\n" + str);
                 fstream.Write(buffer, 0, buffer.Length);
             }
         }

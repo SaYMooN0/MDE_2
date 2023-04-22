@@ -11,20 +11,23 @@ namespace MDE_2
         public MainWindow()
         {
             InitializeComponent();
-            Starting();
+            WinStarting();
             
         }
-        private void Starting()
+        private void WinStarting()
         {
             Reporter.CreateFile();
-            Closing += MainWindow_Closing;
+            Closing +=WinClosing;
+            Settings.Deserialize();
             themeCollection = new ThemeCollection();
             Reporter.Log(themeCollection.ToString());
             SizeChanged += PositionAllTheElements;
+            ColorTheElements();
         }
-        private void MainWindow_Closing(object? sender, System.ComponentModel.CancelEventArgs e)
+        private void WinClosing(object? sender, System.ComponentModel.CancelEventArgs e)
         {
             themeCollection.SerializeThemeList();
+            Settings.Serialize();
         }
         private void PositionAllTheElements(object sender, SizeChangedEventArgs e)
         {
@@ -54,6 +57,25 @@ namespace MDE_2
             {
                 Reporter.Log("ERROR: SetElementSize \n" + ex.Message);
             }
+        }
+        private void ColorTheElements()
+        {
+            MainCanvas.Background = themeCollection.CurrentTheme.MainBackGround;
+        }
+
+        private void DevelopBTN_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void SettinsBTN_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AboutBTN_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
