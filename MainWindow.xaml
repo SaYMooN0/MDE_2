@@ -14,37 +14,79 @@
         </ResourceDictionary>
     </Window.Resources>
     <Canvas x:Name="MainCanvas">
-        <Grid x:Name="CenterGrid"
-              HorizontalAlignment="Center"
-              VerticalAlignment="Center"
-              Width="200">
+        <Grid x:Name="CenterGrid">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
+
+            <!-- Develop Button -->
             <Button x:Name="DevelopBTN"
-                    Grid.Row="0"
-                    Style="{StaticResource ButtonStyle}"
-                    Content="Кнопка 1"
-                    HorizontalAlignment="Stretch"
-                    Margin="0,0,0,10"
-                    Click="DevelopBTN_Click"/>
+            Grid.Row="0"
+            Style="{StaticResource ButtonStyle}"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            Margin="0,0,0,8"
+            Click="DevelopBTN_Click">
+                <Grid >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Source="Images/Icons/Run.png"
+                           HorizontalAlignment="Left" VerticalAlignment="Center"
+                           Stretch="Uniform" Margin="8 4"/>
+                    <TextBlock Grid.Column="1" Text="Develop" VerticalAlignment="Center"/>
+                </Grid>
+                <Button.HorizontalContentAlignment>Stretch</Button.HorizontalContentAlignment>
+                <Button.VerticalContentAlignment>Stretch</Button.VerticalContentAlignment>
+            </Button>
 
+            <!-- Settings Button -->
             <Button x:Name="SettinsBTN"
-                    Grid.Row="1"
-                    Style="{StaticResource ButtonStyle}"
-                    Content="Кнопка 2"
-                    HorizontalAlignment="Stretch"
-                    Margin="0,0,0,10"
-                    Click="SettinsBTN_Click"/>
+           Grid.Row="1"
+            Style="{StaticResource ButtonStyle}"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            Margin="0,0,0,8"
+            Click="DevelopBTN_Click">
+                <Grid >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Source="Images/Icons/Settings.png"
+                           HorizontalAlignment="Left" VerticalAlignment="Center"
+                           Stretch="Uniform" Margin="8 4"/>
+                    <TextBlock Grid.Column="1" Text="Settings" VerticalAlignment="Center"/>
+                </Grid>
+                <Button.HorizontalContentAlignment>Stretch</Button.HorizontalContentAlignment>
+                <Button.VerticalContentAlignment>Stretch</Button.VerticalContentAlignment>
+            </Button>
 
+            <!-- About Me Button -->
             <Button x:Name="AboutBTN"
-                    Grid.Row="2"
-                    Style="{StaticResource ButtonStyle}"
-                    Content="Кнопка 3"
-                    HorizontalAlignment="Stretch"
-                    Click="AboutBTN_Click"/>
+           Grid.Row="2"
+            Style="{StaticResource ButtonStyle}"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            Margin="0,0,0,8"
+            Click="DevelopBTN_Click">
+                <Grid >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Source="Images/Icons/Profile.png"
+                           HorizontalAlignment="Left" VerticalAlignment="Center"
+                           Stretch="Uniform" Margin="8 4"/>
+                    <TextBlock Grid.Column="1" Text="About Author" VerticalAlignment="Center"/>
+                </Grid>
+                <Button.HorizontalContentAlignment>Stretch</Button.HorizontalContentAlignment>
+                <Button.VerticalContentAlignment>Stretch</Button.VerticalContentAlignment>
+            </Button>
         </Grid>
     </Canvas>
+
 </Window>

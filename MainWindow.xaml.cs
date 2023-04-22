@@ -12,16 +12,16 @@ namespace MDE_2
         {
             InitializeComponent();
             WinStarting();
-            
+
         }
         private void WinStarting()
         {
             Reporter.CreateFile();
-            Closing +=WinClosing;
+            Closing += WinClosing;
             Settings.Deserialize();
             themeCollection = new ThemeCollection();
             Reporter.Log(themeCollection.ToString());
-            SizeChanged += PositionAllTheElements;
+            SizeChanged += UIElementsInstalling;
             ColorTheElements();
         }
         private void WinClosing(object? sender, System.ComponentModel.CancelEventArgs e)
@@ -29,20 +29,22 @@ namespace MDE_2
             themeCollection.SerializeThemeList();
             Settings.Serialize();
         }
-        private void PositionAllTheElements(object sender, SizeChangedEventArgs e)
+        private void UIElementsInstalling(object sender, SizeChangedEventArgs e)
         {
-            SetElementSize(CenterGrid, 0.4, 0.4);
-            SetElementOnPosition(CenterGrid);
-            
+            SetElementSize(CenterGrid, 0.3, 0.38);
+            SetElementOnPosition(CenterGrid, 0.5, 0);
         }
-        private void SetElementOnPosition(FrameworkElement control)
+        private void CenterElement(FrameworkElement control) { SetElementOnPosition(control, 0, 0); }
+        private void SetElementOnPosition(FrameworkElement control, double verticalMargin, double gorizontalMargin)
         {
             try
             {
-                Canvas.SetLeft(control, (Width-control.Width)/2);
-                Canvas.SetTop(control, (Height - control.Height) / 2);
+                Canvas.SetLeft(control, (Width - control.Width) / 2 * (gorizontalMargin + 1));
+                Canvas.SetTop(control, (Height - control.Height) / 2 * (verticalMargin + 1));
+
             }
-            catch(Exception ex) {
+            catch (Exception ex)
+            {
                 Reporter.Log("ERROR: SetElement \n" + ex.Message);
             }
         }
@@ -50,8 +52,9 @@ namespace MDE_2
         {
             try
             {
-                control.Width = widthMultiplier*Width;
-                control.Height = widthMultiplier* Height;
+                control.Width = widthMultiplier * Width;
+                control.Height = heightMultiplier * Height;
+
             }
             catch (Exception ex)
             {

@@ -2,10 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Reflection.Metadata.Ecma335;
-using System.Runtime.InteropServices.JavaScript;
-using System.Windows;
-
 namespace MDE_2.Code
 {
     class ThemeCollection
@@ -15,7 +11,7 @@ namespace MDE_2.Code
         public ThemeCollection()
         {
             Themes = new List<Theme>();
-            DeserializeThemeList();
+            //DeserializeThemeList();
             if (Themes.Count > 0)
             {
                 SetCurrentTheme(Settings.ChosenTheme);
@@ -23,7 +19,7 @@ namespace MDE_2.Code
             }
             Theme DefaultDark = new Theme("Default_Dark", "#1E1E1E");
             Themes.Add(DefaultDark);
-            Theme DefaultLight = new Theme("Default_Light", "#1A1A1A");
+            Theme DefaultLight = new Theme("Default_Light", "#27252F");
             Themes.Add(DefaultLight);
             SetCurrentTheme(Settings.ChosenTheme);
         }
@@ -33,7 +29,7 @@ namespace MDE_2.Code
             {
                 if (theme.Name == themeName)
                 {
-                    CurrentTheme= theme;
+                    CurrentTheme = theme;
                     return;
                 }
             }
@@ -44,9 +40,9 @@ namespace MDE_2.Code
             string str = "Themes Collection:\n";
             if (Themes.Count < 1)
                 return "No Themes";
-            str += "Count: " + Themes.Count.ToString()+"\n";
+            str += "Count: " + Themes.Count.ToString() + "\n";
             for (int i = 0; i < Themes.Count; i++)
-                str +=i.ToString()+") "+ Themes[i].ToString()+"\n";
+                str += i.ToString() + ") " + Themes[i].ToString() + "\n";
             return str;
         }
         private void DeserializeThemeList()
@@ -61,11 +57,11 @@ namespace MDE_2.Code
                     Themes.Add(Theme.DeserializeTheme(@"Themes\" + fileName));
                 }
             }
-            catch (Exception ex) { Reporter.Log("Error: "+ex.Message);}
+            catch (Exception ex) { Reporter.Log("Error: " + ex.Message); }
         }
-        
+
         public void SerializeThemeList()
-        { 
+        {
             foreach (Theme theme in Themes)
                 theme.SerializeTheme();
         }

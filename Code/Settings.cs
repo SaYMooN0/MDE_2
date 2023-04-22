@@ -22,7 +22,7 @@ namespace MDE_2.Code
                 string json = File.ReadAllText(SettingsFilePath);
                 var deserializedSettings = JsonConvert.DeserializeObject<dynamic>(json);
                 ChosenTheme = deserializedSettings.ChosenTheme;
-                Reporter.Log("Settings deserialized successfully");
+                Reporter.Log("settings deserialized successfully");
             }
             else
             {
