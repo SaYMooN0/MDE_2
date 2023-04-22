@@ -13,80 +13,88 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
-    <Canvas x:Name="MainCanvas">
+    <Canvas x:Name="Screen">
+    <Canvas x:Name="MainPage">
         <Grid x:Name="CenterGrid">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-
-            <!-- Develop Button -->
-            <Button x:Name="DevelopBTN"
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Button x:Name="DevelopBTN"
             Grid.Row="0"
             Style="{StaticResource ButtonStyle}"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Stretch"
             Margin="0,0,0,8"
             Click="DevelopBTN_Click">
-                <Grid >
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <Image Source="Images/Icons/Run.png"
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Source="Images/Icons/Run.png"
                            HorizontalAlignment="Left" VerticalAlignment="Center"
                            Stretch="Uniform" Margin="8 4"/>
-                    <TextBlock Grid.Column="1" Text="Develop" VerticalAlignment="Center"/>
-                </Grid>
-                <Button.HorizontalContentAlignment>Stretch</Button.HorizontalContentAlignment>
-                <Button.VerticalContentAlignment>Stretch</Button.VerticalContentAlignment>
-            </Button>
-
-            <!-- Settings Button -->
-            <Button x:Name="SettinsBTN"
+                        <TextBlock Grid.Column="1" Text="Develop" VerticalAlignment="Center"/>
+                    </Grid>
+                    <Button.HorizontalContentAlignment>Stretch</Button.HorizontalContentAlignment>
+                    <Button.VerticalContentAlignment>Stretch</Button.VerticalContentAlignment>
+                </Button>
+                <Button x:Name="HistoryBTN"
            Grid.Row="1"
             Style="{StaticResource ButtonStyle}"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Stretch"
             Margin="0,0,0,8"
-            Click="DevelopBTN_Click">
-                <Grid >
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <Image Source="Images/Icons/Settings.png"
+            Click="HistoryBTN_Click">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Source="Images/Icons/History.png"
                            HorizontalAlignment="Left" VerticalAlignment="Center"
                            Stretch="Uniform" Margin="8 4"/>
-                    <TextBlock Grid.Column="1" Text="Settings" VerticalAlignment="Center"/>
-                </Grid>
-                <Button.HorizontalContentAlignment>Stretch</Button.HorizontalContentAlignment>
-                <Button.VerticalContentAlignment>Stretch</Button.VerticalContentAlignment>
-            </Button>
-
-            <!-- About Me Button -->
-            <Button x:Name="AboutBTN"
-           Grid.Row="2"
-            Style="{StaticResource ButtonStyle}"
-            HorizontalAlignment="Stretch"
-            VerticalAlignment="Stretch"
-            Margin="0,0,0,8"
-            Click="DevelopBTN_Click">
-                <Grid >
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <Image Source="Images/Icons/Profile.png"
+                        <TextBlock Grid.Column="1" Text="History" VerticalAlignment="Center"/>
+                    </Grid>
+                    <Button.HorizontalContentAlignment>Stretch</Button.HorizontalContentAlignment>
+                    <Button.VerticalContentAlignment>Stretch</Button.VerticalContentAlignment>
+                </Button>
+                <Button x:Name="SettinsBTN"
+                Grid.Row="2"
+                Style="{StaticResource ButtonStyle}"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                Margin="0,0,0,8"
+                Click="SettinsBTN_Click">
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Source="Images/Icons/Settings.png"
                            HorizontalAlignment="Left" VerticalAlignment="Center"
                            Stretch="Uniform" Margin="8 4"/>
-                    <TextBlock Grid.Column="1" Text="About Author" VerticalAlignment="Center"/>
-                </Grid>
-                <Button.HorizontalContentAlignment>Stretch</Button.HorizontalContentAlignment>
-                <Button.VerticalContentAlignment>Stretch</Button.VerticalContentAlignment>
-            </Button>
-        </Grid>
+                        <TextBlock Grid.Column="1" Text="Settings" VerticalAlignment="Center"/>
+                    </Grid>
+                    <Button.HorizontalContentAlignment>Stretch</Button.HorizontalContentAlignment>
+                    <Button.VerticalContentAlignment>Stretch</Button.VerticalContentAlignment>
+                </Button>
+            </Grid>
     </Canvas>
+        <Canvas x:Name="DevelopPage" Visibility="Hidden">
 
+        </Canvas>
+        <Canvas x:Name="SettingsPage" Visibility="Hidden">
+            <Button x:Name="ChangeThemeBTN" Click="ChangeThemeBTN_Click" Width="260" Height="80" Content="Change theme" Canvas.Top="300" Background="Red" FontSize="35"/>
+        </Canvas>
+        <Canvas x:Name="HistoryPage" Visibility="Hidden">
+
+        </Canvas>
+        <Button x:Name="ReturnBTN" Width="100" Height="100" Click="ReturnBTN_Click" Visibility="Hidden">
+
+        </Button>
+    </Canvas>
+   
 </Window>

@@ -8,20 +8,24 @@ namespace MDE_2.Code
     class Theme
     {
         public string Name { get; }
-        public string MainBackGroundColor { get; }
+        public string MainBackGroundStr { get; }
+        public string MainBorderStr { get; }
         [JsonIgnore]
-        public SolidColorBrush MainBackGround => new SolidColorBrush((Color)ColorConverter.ConvertFromString(MainBackGroundColor));
+        public SolidColorBrush MainBackGround => new SolidColorBrush((Color)ColorConverter.ConvertFromString(MainBackGroundStr));
+        public SolidColorBrush MainBorder => new SolidColorBrush((Color)ColorConverter.ConvertFromString(MainBorderStr));
 
-        public Theme(string Name, string MainBackGroundColor)
+        public Theme(string Name, string BackGroundColor, string MainBorderColor)
         {
             this.Name = Name;
-            this.MainBackGroundColor = MainBackGroundColor;
+            this.MainBackGroundStr = BackGroundColor;
+            this.MainBorderStr = MainBorderColor;
         }
 
         public override string ToString()
         {
             string str = "Theme: " + Name + "\n";
-            str += "Main BackGround Color: " + MainBackGroundColor;
+            str += "Main BackGround Color: " + MainBackGroundStr+"\n";
+            str += "Main Border Color: " + MainBorderStr+"\n";
             return str;
         }
 

@@ -31,7 +31,7 @@ namespace MDE_2
         }
         private void UIElementsInstalling(object sender, SizeChangedEventArgs e)
         {
-            SetElementSize(CenterGrid, 0.3, 0.38);
+            SetElementSize(CenterGrid, 0.2, 0.38);
             SetElementOnPosition(CenterGrid, 0.5, 0);
         }
         private void CenterElement(FrameworkElement control) { SetElementOnPosition(control, 0, 0); }
@@ -63,22 +63,52 @@ namespace MDE_2
         }
         private void ColorTheElements()
         {
-            MainCanvas.Background = themeCollection.CurrentTheme.MainBackGround;
+            Screen.Background = themeCollection.CurrentTheme.MainBackGround;
+            Painter.ColorTheButton(DevelopBTN, themeCollection.CurrentTheme);
+            Painter.ColorTheButton(HistoryBTN, themeCollection.CurrentTheme);
+            Painter.ColorTheButton(SettinsBTN, themeCollection.CurrentTheme);
+            Painter.ColorTheButton(ReturnBTN, themeCollection.CurrentTheme);
         }
 
         private void DevelopBTN_Click(object sender, RoutedEventArgs e)
         {
-
+            MainPage.Visibility = Visibility.Hidden;
+            ReturnBTN.Visibility = Visibility.Visible;
+            DevelopPage.Visibility = Visibility.Visible;
         }
 
         private void SettinsBTN_Click(object sender, RoutedEventArgs e)
         {
-
+            MainPage.Visibility = Visibility.Hidden;
+            ReturnBTN.Visibility = Visibility.Visible;
+            SettingsPage.Visibility = Visibility.Visible;
         }
 
-        private void AboutBTN_Click(object sender, RoutedEventArgs e)
+        private void HistoryBTN_Click(object sender, RoutedEventArgs e)
         {
+            MainPage.Visibility = Visibility.Hidden;
+            ReturnBTN.Visibility = Visibility.Visible;
+            HistoryPage.Visibility = Visibility.Visible;
+        }
 
+        private void ReturnBTN_Click(object sender, RoutedEventArgs e)
+        {
+            MainPage.Visibility = Visibility.Visible;
+            ReturnBTN.Visibility = Visibility.Hidden;
+
+            DevelopPage.Visibility = Visibility.Hidden;
+            HistoryPage.Visibility = Visibility.Hidden;
+            SettingsPage.Visibility = Visibility.Hidden;
+        }
+
+        private void ChangeThemeBTN_Click(object sender, RoutedEventArgs e)
+        {
+            if (themeCollection.CurrentTheme.Name == "Default_Dark")
+                themeCollection.SetCurrentTheme("Default_Light");
+            else
+                themeCollection.SetCurrentTheme("Default_Dark");
+            ColorTheElements();
+            MessageBox.Show(themeCollection.CurrentTheme.ToString());
         }
     }
 }
