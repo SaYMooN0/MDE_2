@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 using System.Windows.Controls;
+using System.Windows.Media;
+using System.Windows.Shapes;
 
 namespace MDE_2.Code
 {
@@ -15,5 +13,10 @@ namespace MDE_2.Code
             btn.Foreground = theme.MainBorder;
             btn.BorderBrush = theme.MainBorder;
         }
+        public static void ColorTheIcon(Path icon,SolidColorBrush brush)
+        {
+            icon.Fill= brush;
+        }
+        
     }
 }

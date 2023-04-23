@@ -3,13 +3,16 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:MDE_2"
+      
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" >
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Code\Styles\ButtonStyle.xaml"/>
+                <ResourceDictionary Source="Resources\Styles\ButtonStyle.xaml"/>
+                <ResourceDictionary Source="Resources\Icons\Develop.xaml"/>
+                <ResourceDictionary Source="Resources\Icons\History.xaml"/>
+                <ResourceDictionary Source="Resources\Icons\Settings.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <Style TargetType="TextBlock">
                 <Setter Property="FontWeight" Value="Bold"/>
@@ -28,17 +31,19 @@
                 <Button x:Name="DevelopBTN"
             Grid.Row="0"
             Style="{StaticResource ButtonStyle}"
-            HorizontalAlignment="Stretch"
-            VerticalAlignment="Stretch"
             Click="DevelopBTN_Click">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <Image Source="Images/Icons/Run.png"
-                   HorizontalAlignment="Left" VerticalAlignment="Center"
-                   Stretch="Uniform" Margin="8 4"/>
+                        <Path x:Name="ICN_Develop"  Stretch="Uniform" StrokeThickness="1" 
+                              HorizontalAlignment="Center" VerticalAlignment="Center"
+                              Margin="8 4" Data="{StaticResource Icon_Develop}">
+                            <Path.Fill>
+                                <SolidColorBrush x:Name="ICN_Develop_Brush" Color="Black"/>
+                            </Path.Fill>
+                        </Path>
                         <TextBlock Grid.Column="1" Text="Develop" VerticalAlignment="Center" FontSize="{Binding ElementName=DevelopBTN, Path=FontSize}" />
                     </Grid>
                     <Button.HorizontalContentAlignment>Stretch</Button.HorizontalContentAlignment>
@@ -55,9 +60,13 @@
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <Image Source="Images/Icons/History.png"
-                   HorizontalAlignment="Left" VerticalAlignment="Center"
-                   Stretch="Uniform" Margin="8 4"/>
+                        <Path x:Name="ICN_History"  Stretch="Uniform" StrokeThickness="1" 
+                              HorizontalAlignment="Center" VerticalAlignment="Center"
+                              Margin="8 4" Data="{StaticResource Icon_History}">
+                            <Path.Fill>
+                                <SolidColorBrush x:Name="ICN_History_Brush" Color="Black"/>
+                            </Path.Fill>
+                        </Path>
                         <TextBlock Grid.Column="1" Text="History" VerticalAlignment="Center" FontSize="{Binding ElementName=HistoryBTN, Path=FontSize}"/>
                     </Grid>
                     <Button.HorizontalContentAlignment>Stretch</Button.HorizontalContentAlignment>
@@ -69,14 +78,18 @@
             HorizontalAlignment="Stretch"
             VerticalAlignment="Stretch"
             Click="SettinsBTN_Click">
-                    <Grid >
+                    <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <Image Source="Images/Icons/Settings.png"
-                   HorizontalAlignment="Left" VerticalAlignment="Center"
-                   Stretch="Uniform" Margin="8 4"/>
+                        <Path x:Name="ICN_Settings"  Stretch="Uniform" StrokeThickness="1" 
+                              HorizontalAlignment="Center" VerticalAlignment="Center"
+                              Margin="8 4" Data="{StaticResource Icon_Settings}">
+                            <Path.Fill>
+                                <SolidColorBrush x:Name="ICN_Settings_Brush" Color="Black"/>
+                            </Path.Fill>
+                        </Path>
                         <TextBlock Grid.Column="1" Text="Settings" VerticalAlignment="Center" FontSize="{Binding ElementName=SettinsBTN, Path=FontSize}" />
                     </Grid>
                     <Button.HorizontalContentAlignment>Stretch</Button.HorizontalContentAlignment>

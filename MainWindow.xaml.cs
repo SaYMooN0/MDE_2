@@ -1,8 +1,8 @@
 ﻿using MDE_2.Code;
 using System;
-using System.Data;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Shapes;
 
 namespace MDE_2
 {
@@ -59,7 +59,10 @@ namespace MDE_2
             SetButtonFontSize(HistoryBTN, 5);
             SetButtonBorderSize(SettinsBTN);
             SetButtonFontSize(SettinsBTN,5);
-
+            SetIconsSize(ICN_Develop);
+            SetIconsSize(ICN_History);
+            SetIconsSize(ICN_Settings);
+    
         }
         private void SetElementOnPosition(FrameworkElement control, double verticalMargin, double horizontalMargin)
         {
@@ -75,6 +78,16 @@ namespace MDE_2
             }
         }
         private void SetMarginForElementsInGrid(Grid g, double multiplier) { foreach (Control control in g.Children) control.Margin=new Thickness(multiplier*g.Height*0.2); }
+        private void SetIconsSize(Path icn)
+        {
+            FrameworkElement parent = icn.Parent as FrameworkElement;
+            parent = parent.Parent as FrameworkElement;
+            double size = Math.Min(parent.ActualHeight, parent.ActualWidth/3.2);
+            size *= 0.62;
+            icn.Height = size;
+            icn.Width=size;
+           
+        }
         private void SetElementSize(FrameworkElement control, double widthMultiplier, double heightMultiplier)
         {
             try
@@ -92,7 +105,7 @@ namespace MDE_2
         private void SetButtonFontSize(Button control, double multiplier) {
             try
             {
-                control.FontSize = Math.Min(control.ActualWidth/2, control.ActualHeight)/10 * multiplier+2;
+                control.FontSize = Math.Min(control.ActualWidth/4.8, control.ActualHeight)*0.155 * multiplier;
             }
             catch
             {
@@ -112,6 +125,9 @@ namespace MDE_2
             Painter.ColorTheButton(HistoryBTN, themeCollection.CurrentTheme);
             Painter.ColorTheButton(SettinsBTN, themeCollection.CurrentTheme);
             Painter.ColorTheButton(ReturnBTN, themeCollection.CurrentTheme);
+            Painter.ColorTheIcon(ICN_Develop, themeCollection.CurrentTheme.MainBorder);
+            Painter.ColorTheIcon(ICN_History, themeCollection.CurrentTheme.MainBorder);
+            Painter.ColorTheIcon(ICN_Settings, themeCollection.CurrentTheme.MainBorder);
         }
 
         private void DevelopBTN_Click(object sender, RoutedEventArgs e)
@@ -152,7 +168,6 @@ namespace MDE_2
             else
                 themeCollection.SetCurrentTheme("Default_Dark");
             ColorTheElements();
-            MessageBox.Show(themeCollection.CurrentTheme.ToString());
         }
     }
 }

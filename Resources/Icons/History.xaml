@@ -1,0 +1,8 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <PathGeometry x:Key="Icon_History">
+        M3.0156,10L6.99999,10 M3.0156,10L3.0156,6 M3.0156,10L6.34315,6.34315C9.46734,3.21895 14.5327,3.21895 17.6569,6.34315 20.781,9.46734 20.781,14.5327 17.6569,17.6569 14.5327,20.781 9.46734,20.781 6.34315,17.6569 5.55928,16.873 4.97209,15.9669 4.58158,15 M12,9L12,13 15,14.5
+    </PathGeometry>
+
+</ResourceDictionary>
