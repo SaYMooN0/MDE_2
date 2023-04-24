@@ -4,9 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
+        AllowsTransparency="True"
+        Background="Transparent"
         WindowStyle="None"
-        MaxWidth="{Binding Source={x:Static SystemParameters.WorkArea}, Path=Width}"
-        MaxHeight="{Binding Source={x:Static SystemParameters.WorkArea}, Path=Height}"
         Title="MainWindow" Height="450" Width="800" >
     <Window.Resources>
         <ResourceDictionary>
@@ -25,12 +25,12 @@
             </Style>
         </ResourceDictionary>
     </Window.Resources>
-    <Canvas x:Name="Screen">
+    <Canvas x:Name="Screen"  Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=Window}}" Height="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=Window}}">
         <DockPanel x:Name="TitleBar" DockPanel.Dock="Top" >
-            <Button x:Name="BTNWinCross" 
+            <Button x:Name="BTNWinCross" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" BorderThickness="0"
                     Click="BTNWinCross_Click"
                     DockPanel.Dock="Right">
-                <Path x:Name="BTNWinCross_Path"  Stretch="Uniform" StrokeThickness="1" 
+                <Path x:Name="ICNWinCross"  Stretch="Uniform" StrokeThickness="1" 
                               HorizontalAlignment="Center" VerticalAlignment="Center"
                               Margin="8 4" Data="{StaticResource IconWinCross}">
                     <Path.Fill>
@@ -38,10 +38,10 @@
                     </Path.Fill>
                 </Path>
             </Button>
-            <Button x:Name="BTNWinSquare" 
+            <Button x:Name="BTNWinSquare" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" BorderThickness="0"
                     Click="BTNWinSquare_Click"
                     DockPanel.Dock="Right">
-                <Path x:Name="BTNWinSQR_Path"  Stretch="Uniform" StrokeThickness="1" 
+                <Path x:Name="ICNWinSquare"  Stretch="Uniform" StrokeThickness="1" 
                               HorizontalAlignment="Center" VerticalAlignment="Center"
                               Margin="8 4" Data="{StaticResource IconWinSquare}">
                     <Path.Fill>
@@ -49,10 +49,10 @@
                     </Path.Fill>
                 </Path>
             </Button>
-            <Button x:Name="BTNWinMinus" 
+            <Button x:Name="BTNWinMinus" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" BorderThickness="0"
                     Click="BTNWinMinus_Click"
                     DockPanel.Dock="Right">
-                <Path x:Name="BTNWinMinu_Path"  Stretch="Uniform" StrokeThickness="1" 
+                <Path x:Name="ICNWinMinus"  Stretch="Uniform" StrokeThickness="1" 
                               HorizontalAlignment="Center" VerticalAlignment="Center"
                               Margin="8 4" Data="{StaticResource IconWinMinus}">
                     <Path.Fill>

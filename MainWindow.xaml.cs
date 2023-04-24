@@ -39,6 +39,9 @@ namespace MDE_2
         }
         private void WinStarting()
         {
+            var systemBorder = SystemParameters.WindowNonClientFrameThickness;
+            this.MaxWidth = SystemParameters.WorkArea.Width + (systemBorder.Left + systemBorder.Right);
+            this.MaxHeight = SystemParameters.WorkArea.Height + (systemBorder.Top + systemBorder.Bottom);
             Reporter.CreateFile();
             SizeChanged += UIElementsInstalling;
             StateChanged += UIElementsInstalling;
@@ -70,7 +73,7 @@ namespace MDE_2
         }
         private void UIElementsInstalling(object sender, SizeChangedEventArgs e)
         {
-
+            TitleBar.Width= Width-10;
             SetElementSize(MainPage, 1, 1);
             SetElementSize(CenterGrid, 0.24, 0.44);
             SetElementOnPosition(CenterGrid, 0.64, 0);
@@ -143,6 +146,8 @@ namespace MDE_2
         private void ColorTheElements()
         {
             Screen.Background = themeCollection.CurrentTheme.MainBackGround;
+            //Background= themeCollection.CurrentTheme.MainBackGround;
+            //BorderBrush = themeCollection.CurrentTheme.MainBackGround;
             Painter.ColorTheButton(DevelopBTN, themeCollection.CurrentTheme);
             Painter.ColorTheButton(HistoryBTN, themeCollection.CurrentTheme);
             Painter.ColorTheButton(SettinsBTN, themeCollection.CurrentTheme);
@@ -150,6 +155,9 @@ namespace MDE_2
             Painter.ColorTheIcon(ICN_Develop, themeCollection.CurrentTheme.MainBorder);
             Painter.ColorTheIcon(ICN_History, themeCollection.CurrentTheme.MainBorder);
             Painter.ColorTheIcon(ICN_Settings, themeCollection.CurrentTheme.MainBorder);
+            Painter.ColorTheIcon(ICNWinCross, themeCollection.CurrentTheme.MainBorder);
+            Painter.ColorTheIcon(ICNWinSquare, themeCollection.CurrentTheme.MainBorder);
+            Painter.ColorTheIcon(ICNWinMinus, themeCollection.CurrentTheme.MainBorder);
         }
 
         private void DevelopBTN_Click(object sender, RoutedEventArgs e)
