@@ -10,15 +10,29 @@ namespace MDE_2.Code
         public string Name { get; }
         public string MainBackGroundStr { get; }
         public string MainBorderStr { get; }
+        public string SecondBackGroundStr { get; }
+        public string SecondBorderStr { get; }
         [JsonIgnore]
         public SolidColorBrush MainBackGround => new SolidColorBrush((Color)ColorConverter.ConvertFromString(MainBackGroundStr));
         public SolidColorBrush MainBorder => new SolidColorBrush((Color)ColorConverter.ConvertFromString(MainBorderStr));
+        public SolidColorBrush SecondBackGround => new SolidColorBrush((Color)ColorConverter.ConvertFromString(SecondBackGroundStr));
+        public SolidColorBrush SecondBorder => new SolidColorBrush((Color)ColorConverter.ConvertFromString(SecondBorderStr));
 
         public Theme(string Name, string BackGroundColor, string MainBorderColor)
         {
             this.Name = Name;
             this.MainBackGroundStr = BackGroundColor;
             this.MainBorderStr = MainBorderColor;
+            this.SecondBackGroundStr = "#67E22D";
+            this.SecondBorderStr = "#FF89EF";
+        }
+        public Theme(string Name, string BackGroundColor,string SecondBackGroundColor, string MainBorderColor, string SecondBorderColor)
+        {
+            this.Name = Name;
+            this.MainBackGroundStr = BackGroundColor;
+            this.MainBorderStr = MainBorderColor;
+            this.SecondBackGroundStr = SecondBackGroundColor;
+            this.SecondBorderStr = SecondBorderColor;
         }
 
         public override string ToString()

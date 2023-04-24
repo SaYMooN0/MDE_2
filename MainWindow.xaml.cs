@@ -3,6 +3,7 @@ using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 using System.Windows.Shapes;
 
 namespace MDE_2
@@ -34,13 +35,13 @@ namespace MDE_2
             {
                 this.WindowState = WindowState.Normal;
                 Height = lastSize.Height;
-                Width=lastSize.Width;
+                Width = lastSize.Width;
             }
             else
             {
                 lastSize = new Size(Width, Height);
                 this.WindowState = WindowState.Maximized;
-               
+
             }
             UIElementsInstalling(new object(), null);
         }
@@ -79,21 +80,21 @@ namespace MDE_2
         }
         private void UIElementsInstalling(object sender, SizeChangedEventArgs e)
         {
-            TitleBar.Width= Width-10;
+            TitleBar.Width = Width - 10;
             SetElementSize(MainPage, 1, 1);
             SetElementSize(CenterGrid, 0.24, 0.44);
             SetElementOnPosition(CenterGrid, 0.64, 0);
             SetMarginForElementsInGrid(CenterGrid, 0.1);
             SetButtonBorderSize(DevelopBTN);
-            SetButtonFontSize(DevelopBTN,5);
+            SetButtonFontSize(DevelopBTN, 5);
             SetButtonBorderSize(HistoryBTN);
             SetButtonFontSize(HistoryBTN, 5);
             SetButtonBorderSize(SettinsBTN);
-            SetButtonFontSize(SettinsBTN,5);
+            SetButtonFontSize(SettinsBTN, 5);
             SetIconsSize(ICN_Develop);
             SetIconsSize(ICN_History);
             SetIconsSize(ICN_Settings);
-    
+
         }
         private void SetElementOnPosition(FrameworkElement control, double verticalMargin, double horizontalMargin)
         {
@@ -108,16 +109,16 @@ namespace MDE_2
                 Reporter.Log("ERROR: SetElement \n" + ex.Message);
             }
         }
-        private void SetMarginForElementsInGrid(Grid g, double multiplier) { foreach (Control control in g.Children) control.Margin=new Thickness(multiplier*g.Height*0.2); }
+        private void SetMarginForElementsInGrid(Grid g, double multiplier) { foreach (Control control in g.Children) control.Margin = new Thickness(multiplier * g.Height * 0.2); }
         private void SetIconsSize(Path icn)
         {
             FrameworkElement parent = icn.Parent as FrameworkElement;
             parent = parent.Parent as FrameworkElement;
-            double size = Math.Min(parent.ActualHeight, parent.ActualWidth/3.2);
+            double size = Math.Min(parent.ActualHeight, parent.ActualWidth / 3.2);
             size *= 0.62;
             icn.Height = size;
-            icn.Width=size;
-           
+            icn.Width = size;
+
         }
         private void SetElementSize(FrameworkElement control, double widthMultiplier, double heightMultiplier)
         {
@@ -136,7 +137,7 @@ namespace MDE_2
         private void SetButtonFontSize(Button control, double multiplier) {
             try
             {
-                control.FontSize = Math.Min(control.ActualWidth/4.8, control.ActualHeight)*0.155 * multiplier;
+                control.FontSize = Math.Min(control.ActualWidth / 4.8, control.ActualHeight) * 0.155 * multiplier;
             }
             catch
             {
@@ -152,18 +153,25 @@ namespace MDE_2
         private void ColorTheElements()
         {
             Screen.Background = themeCollection.CurrentTheme.MainBackGround;
-            //Background= themeCollection.CurrentTheme.MainBackGround;
-            //BorderBrush = themeCollection.CurrentTheme.MainBackGround;
             Painter.ColorTheButton(DevelopBTN, themeCollection.CurrentTheme);
             Painter.ColorTheButton(HistoryBTN, themeCollection.CurrentTheme);
             Painter.ColorTheButton(SettinsBTN, themeCollection.CurrentTheme);
             Painter.ColorTheButton(ReturnBTN, themeCollection.CurrentTheme);
+            Painter.ColorTheButton(BTNWinMinus, themeCollection.CurrentTheme);
+            Painter.ColorTheButton(BTNWinCross, themeCollection.CurrentTheme);
+            Painter.ColorTheButton(BTNWinSquare, themeCollection.CurrentTheme);
             Painter.ColorTheIcon(ICN_Develop, themeCollection.CurrentTheme.MainBorder);
             Painter.ColorTheIcon(ICN_History, themeCollection.CurrentTheme.MainBorder);
             Painter.ColorTheIcon(ICN_Settings, themeCollection.CurrentTheme.MainBorder);
             Painter.ColorTheIcon(ICNWinCross, themeCollection.CurrentTheme.MainBorder);
             Painter.ColorTheIcon(ICNWinSquare, themeCollection.CurrentTheme.MainBorder);
             Painter.ColorTheIcon(ICNWinMinus, themeCollection.CurrentTheme.MainBorder);
+         
+            var res = Resources.MergedDictionaries[0];
+            res["ButtonPressedBackground"] =themeCollection.CurrentTheme.SecondBorder;
+            res["ButtonMouseOverBackground"] =themeCollection.CurrentTheme.SecondBorder;
+            //res["ButtonDisabledBackground"] =themeCollection.CurrentTheme.MainBorder;
+          
         }
 
         private void DevelopBTN_Click(object sender, RoutedEventArgs e)

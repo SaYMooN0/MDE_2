@@ -28,7 +28,7 @@
     </WindowChrome.WindowChrome>
     <Canvas x:Name="Screen"  Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=Window}}" Height="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=Window}}">
         <DockPanel x:Name="TitleBar" DockPanel.Dock="Top" Margin="0 5" MouseLeftButtonDown="TitleBar_MouseLeftButtonDown">
-            <Button x:Name="BTNWinCross" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" BorderThickness="0"
+            <Button x:Name="BTNWinCross" Style="{StaticResource ButtonStyle}" BorderThickness="0"
                     Click="BTNWinCross_Click"
                     DockPanel.Dock="Right">
                 <Path x:Name="ICNWinCross"  Stretch="Uniform" StrokeThickness="1" 
@@ -39,7 +39,7 @@
                     </Path.Fill>
                 </Path>
             </Button>
-            <Button x:Name="BTNWinSquare" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" BorderThickness="0" 
+            <Button x:Name="BTNWinSquare" Style="{StaticResource ButtonStyle}" BorderThickness="0" 
                     Click="BTNWinSquare_Click"
                     DockPanel.Dock="Right">
                 <Path x:Name="ICNWinSquare"  Stretch="Uniform" StrokeThickness="1" 
@@ -50,7 +50,7 @@
                     </Path.Fill>
                 </Path>
             </Button>
-            <Button x:Name="BTNWinMinus" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" BorderThickness="0"
+            <Button x:Name="BTNWinMinus" Style="{StaticResource ButtonStyle}" BorderThickness="0"
                     Click="BTNWinMinus_Click"
                     DockPanel.Dock="Right">
                 <Path x:Name="ICNWinMinus"  Stretch="Uniform" StrokeThickness="1" 

@@ -17,7 +17,7 @@ namespace MDE_2.Code
                 SetCurrentTheme(Settings.ChosenTheme);
                 return;
             }
-            Theme DefaultDark = new Theme("Default_Dark", "#1E1E1E", "#484957");
+            Theme DefaultDark = new Theme("Default_Dark", "#1E1E1E", "#312F3E" ,"#484957","#535167");
             Themes.Add(DefaultDark);
             Theme DefaultLight = new Theme("Default_Light", "#FAFAFC", "#8AA4EE");
             Themes.Add(DefaultLight);
