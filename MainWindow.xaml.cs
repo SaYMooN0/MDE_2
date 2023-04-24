@@ -10,6 +10,7 @@ namespace MDE_2
     public partial class MainWindow : Window
     {
         ThemeCollection themeCollection;
+        Size lastSize;
         public MainWindow()
         {
             InitializeComponent();
@@ -32,10 +33,16 @@ namespace MDE_2
             if (this.WindowState == WindowState.Maximized)
             {
                 this.WindowState = WindowState.Normal;
-                UIElementsInstalling(new object(), null);
+                Height = lastSize.Height;
+                Width=lastSize.Width;
             }
             else
+            {
+                lastSize = new Size(Width, Height);
                 this.WindowState = WindowState.Maximized;
+               
+            }
+            UIElementsInstalling(new object(), null);
         }
         private void WinStarting()
         {
@@ -44,7 +51,6 @@ namespace MDE_2
             this.MaxHeight = SystemParameters.WorkArea.Height + (systemBorder.Top + systemBorder.Bottom);
             Reporter.CreateFile();
             SizeChanged += UIElementsInstalling;
-            StateChanged += UIElementsInstalling;
             UIElementsInstalling(new object(), null);
             Closing += WinClosing;
             Settings.Deserialize();
@@ -198,6 +204,11 @@ namespace MDE_2
             else
                 themeCollection.SetCurrentTheme("Default_Dark");
             ColorTheElements();
+        }
+
+        private void TitleBar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
         }
     }
 }

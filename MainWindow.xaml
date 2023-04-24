@@ -4,10 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        AllowsTransparency="True"
-        Background="Transparent"
         WindowStyle="None"
-        Title="MainWindow" Height="450" Width="800" >
+        Height="450" Width="800" >
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -25,20 +23,23 @@
             </Style>
         </ResourceDictionary>
     </Window.Resources>
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="0" GlassFrameThickness="0,0,0,1" CornerRadius="0"/>
+    </WindowChrome.WindowChrome>
     <Canvas x:Name="Screen"  Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=Window}}" Height="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=Window}}">
-        <DockPanel x:Name="TitleBar" DockPanel.Dock="Top" >
+        <DockPanel x:Name="TitleBar" DockPanel.Dock="Top" Margin="0 5" MouseLeftButtonDown="TitleBar_MouseLeftButtonDown">
             <Button x:Name="BTNWinCross" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" BorderThickness="0"
                     Click="BTNWinCross_Click"
                     DockPanel.Dock="Right">
                 <Path x:Name="ICNWinCross"  Stretch="Uniform" StrokeThickness="1" 
                               HorizontalAlignment="Center" VerticalAlignment="Center"
-                              Margin="8 4" Data="{StaticResource IconWinCross}">
+                              Margin="8 4" Data="{StaticResource IconWinCross}" >
                     <Path.Fill>
                         <SolidColorBrush x:Name="BTNWinCross_Brush" Color="Black"/>
                     </Path.Fill>
                 </Path>
             </Button>
-            <Button x:Name="BTNWinSquare" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" BorderThickness="0"
+            <Button x:Name="BTNWinSquare" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" BorderThickness="0" 
                     Click="BTNWinSquare_Click"
                     DockPanel.Dock="Right">
                 <Path x:Name="ICNWinSquare"  Stretch="Uniform" StrokeThickness="1" 
@@ -60,7 +61,7 @@
                     </Path.Fill>
                 </Path>
             </Button>
-            <TextBlock HorizontalAlignment="Left" MouseDown="TitleBar_MouseDown">Application Name</TextBlock>
+            <Label/>
         </DockPanel>
         <Canvas x:Name="MainPage">
             <Grid x:Name="CenterGrid" >
