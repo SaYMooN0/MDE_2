@@ -2,6 +2,7 @@
 using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Shapes;
 
 namespace MDE_2
@@ -14,6 +15,27 @@ namespace MDE_2
             InitializeComponent();
             WinStarting();
 
+        }
+        private void TitleBar_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+                if (e.ClickCount == 2)
+                    AdjustWindowSize();
+                else
+                    Application.Current.MainWindow.DragMove();
+        }
+        private void BTNWinCross_Click(object sender, RoutedEventArgs e) { Application.Current.Shutdown(); }
+        private void BTNWinSquare_Click(object sender, RoutedEventArgs e) { AdjustWindowSize(); }
+        private void BTNWinMinus_Click(object sender, RoutedEventArgs e) { this.WindowState = WindowState.Minimized; }
+        private void AdjustWindowSize()
+        {
+            if (this.WindowState == WindowState.Maximized)
+            {
+                this.WindowState = WindowState.Normal;
+                UIElementsInstalling(new object(), null);
+            }
+            else
+                this.WindowState = WindowState.Maximized;
         }
         private void WinStarting()
         {

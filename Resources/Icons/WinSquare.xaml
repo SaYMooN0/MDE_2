@@ -1,0 +1,8 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <PathGeometry x:Key="IconWinSquare">
+        M1,3.25A2.25,2.25,0,0,1,3.25,1L12.75,1A2.25,2.25,0,0,1,15,3.25L15,12.75A2.25,2.25,0,0,1,12.75,15L3.25,15A2.25,2.25,0,0,1,1,12.75L1,3.25z M3.25,2.5A0.75,0.75,0,0,0,2.5,3.25L2.5,12.75C2.5,13.164,2.836,13.5,3.25,13.5L12.75,13.5A0.75,0.75,0,0,0,13.5,12.75L13.5,3.25A0.75,0.75,0,0,0,12.75,2.5L3.25,2.5z
+    </PathGeometry>
+
+</ResourceDictionary>

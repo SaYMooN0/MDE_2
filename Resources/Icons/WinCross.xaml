@@ -1,0 +1,8 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <PathGeometry x:Key="IconWinCross">
+        M13.41,12L19.71,5.71A1,1,0,1,0,18.29,4.29L12,10.59 5.71,4.29A1,1,0,0,0,4.29,5.71L10.59,12 4.29,18.29A1,1,0,0,0,4.29,19.71A1,1,0,0,0,5.71,19.71L12,13.41 18.29,19.71A1,1,0,0,0,19.71,19.71A1,1,0,0,0,19.71,18.29z
+    </PathGeometry>
+
+</ResourceDictionary>

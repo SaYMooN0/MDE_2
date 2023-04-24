@@ -3,8 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      
         mc:Ignorable="d"
+        WindowStyle="None"
+        MaxWidth="{Binding Source={x:Static SystemParameters.WorkArea}, Path=Width}"
+        MaxHeight="{Binding Source={x:Static SystemParameters.WorkArea}, Path=Height}"
         Title="MainWindow" Height="450" Width="800" >
     <Window.Resources>
         <ResourceDictionary>
@@ -13,6 +15,9 @@
                 <ResourceDictionary Source="Resources\Icons\Develop.xaml"/>
                 <ResourceDictionary Source="Resources\Icons\History.xaml"/>
                 <ResourceDictionary Source="Resources\Icons\Settings.xaml"/>
+                <ResourceDictionary Source="Resources\Icons\WinCross.xaml"/>
+                <ResourceDictionary Source="Resources\Icons\WinSquare.xaml"/>
+                <ResourceDictionary Source="Resources\Icons\WinMinus.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <Style TargetType="TextBlock">
                 <Setter Property="FontWeight" Value="Bold"/>
@@ -21,7 +26,43 @@
         </ResourceDictionary>
     </Window.Resources>
     <Canvas x:Name="Screen">
-    <Canvas x:Name="MainPage">
+        <DockPanel x:Name="TitleBar" DockPanel.Dock="Top" >
+            <Button x:Name="BTNWinCross" 
+                    Click="BTNWinCross_Click"
+                    DockPanel.Dock="Right">
+                <Path x:Name="BTNWinCross_Path"  Stretch="Uniform" StrokeThickness="1" 
+                              HorizontalAlignment="Center" VerticalAlignment="Center"
+                              Margin="8 4" Data="{StaticResource IconWinCross}">
+                    <Path.Fill>
+                        <SolidColorBrush x:Name="BTNWinCross_Brush" Color="Black"/>
+                    </Path.Fill>
+                </Path>
+            </Button>
+            <Button x:Name="BTNWinSquare" 
+                    Click="BTNWinSquare_Click"
+                    DockPanel.Dock="Right">
+                <Path x:Name="BTNWinSQR_Path"  Stretch="Uniform" StrokeThickness="1" 
+                              HorizontalAlignment="Center" VerticalAlignment="Center"
+                              Margin="8 4" Data="{StaticResource IconWinSquare}">
+                    <Path.Fill>
+                        <SolidColorBrush x:Name="BTNWinSQR_Brush" Color="Black"/>
+                    </Path.Fill>
+                </Path>
+            </Button>
+            <Button x:Name="BTNWinMinus" 
+                    Click="BTNWinMinus_Click"
+                    DockPanel.Dock="Right">
+                <Path x:Name="BTNWinMinu_Path"  Stretch="Uniform" StrokeThickness="1" 
+                              HorizontalAlignment="Center" VerticalAlignment="Center"
+                              Margin="8 4" Data="{StaticResource IconWinMinus}">
+                    <Path.Fill>
+                        <SolidColorBrush x:Name="BTNWinMinus_Brush" Color="Black"/>
+                    </Path.Fill>
+                </Path>
+            </Button>
+            <TextBlock HorizontalAlignment="Left" MouseDown="TitleBar_MouseDown">Application Name</TextBlock>
+        </DockPanel>
+        <Canvas x:Name="MainPage">
             <Grid x:Name="CenterGrid" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
