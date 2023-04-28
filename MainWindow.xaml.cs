@@ -18,14 +18,6 @@ namespace MDE_2
             WinStarting();
 
         }
-        private void TitleBar_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.ChangedButton == MouseButton.Left)
-                if (e.ClickCount == 2)
-                    AdjustWindowSize();
-                else
-                    Application.Current.MainWindow.DragMove();
-        }
         private void BTNWinCross_Click(object sender, RoutedEventArgs e) { Application.Current.Shutdown(); }
         private void BTNWinSquare_Click(object sender, RoutedEventArgs e) { AdjustWindowSize(); }
         private void BTNWinMinus_Click(object sender, RoutedEventArgs e) { this.WindowState = WindowState.Minimized; }
@@ -95,6 +87,19 @@ namespace MDE_2
             SetIconsSize(ICN_History);
             SetIconsSize(ICN_Settings);
 
+        }
+        private void SetSettingsMenu()
+        {
+            MenuItem element = null;
+            Canvas c = null;
+            for (int i = 0; i < SettingsMenu.Items.Count; i++)
+            {
+                element = SettingsMenu.Items[i] as MenuItem;
+                c = element.Items[0] as Canvas;
+                c.Height = Height - SettingsMenu.Height;
+                c.Width = Width;
+                c.Background =new SolidColorBrush( Colors.Azure);
+            }
         }
         private void SetElementOnPosition(FrameworkElement control, double verticalMargin, double horizontalMargin)
         {
@@ -166,11 +171,11 @@ namespace MDE_2
             Painter.ColorTheIcon(ICNWinCross, themeCollection.CurrentTheme.MainBorder);
             Painter.ColorTheIcon(ICNWinSquare, themeCollection.CurrentTheme.MainBorder);
             Painter.ColorTheIcon(ICNWinMinus, themeCollection.CurrentTheme.MainBorder);
-         
+            Painter.ColorTheTabMenu(SettingsMenu, themeCollection.CurrentTheme);
             var res = Resources.MergedDictionaries[0];
             res["ButtonPressedBackground"] =themeCollection.CurrentTheme.SecondBorder;
             res["ButtonMouseOverBackground"] =themeCollection.CurrentTheme.SecondBorder;
-            //res["ButtonDisabledBackground"] =themeCollection.CurrentTheme.MainBorder;
+          
           
         }
 
@@ -217,6 +222,16 @@ namespace MDE_2
         private void TitleBar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             DragMove();
+        }
+
+        private void SettingsMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            VisualityTab.Background = Brushes.Transparent;
+            DictionaryTab.Background = Brushes.Transparent;
+            FilesTab.Background = Brushes.Transparent;
+            OtherTab.Background = Brushes.Transparent;
+            TabItem selectedItem = (TabItem)SettingsMenu.SelectedItem;
+            selectedItem.Background = themeCollection.CurrentTheme.SecondBackGround;
         }
     }
 }

@@ -21,13 +21,17 @@
                 <Setter Property="FontWeight" Value="Bold"/>
                 <Setter Property="FontFamily" Value="Corbel"/>
             </Style>
+            <Style TargetType="MenuItem">
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="FontFamily" Value="Corbel"/>
+            </Style>
         </ResourceDictionary>
     </Window.Resources>
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="0" GlassFrameThickness="0,0,0,1" CornerRadius="0"/>
     </WindowChrome.WindowChrome>
     <Canvas x:Name="Screen"  Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=Window}}" Height="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=Window}}">
-        <DockPanel x:Name="TitleBar" DockPanel.Dock="Top" Margin="0 5" MouseLeftButtonDown="TitleBar_MouseLeftButtonDown">
+        <DockPanel x:Name="TitleBar" DockPanel.Dock="Top" MouseLeftButtonDown="TitleBar_MouseLeftButtonDown">
             <Button x:Name="BTNWinCross" Style="{StaticResource ButtonStyle}" BorderThickness="0"
                     Click="BTNWinCross_Click"
                     DockPanel.Dock="Right">
@@ -143,12 +147,54 @@
 
         </Canvas>
         <Canvas x:Name="SettingsPage" Visibility="Hidden">
-            <Button x:Name="ChangeThemeBTN" Click="ChangeThemeBTN_Click" Width="260" Height="80" Content="Change theme" Canvas.Top="300" Background="Red" FontSize="35"/>
+            <TabControl x:Name="SettingsMenu" SelectionChanged="SettingsMenu_SelectionChanged">
+                <TabItem x:Name="VisualityTab">
+                    <TabItem.Header>
+                        <TextBlock Margin="8 3 8 3" Text="Visuality" FontSize="14"/>
+                    </TabItem.Header>
+                    <TabItem.Content>
+                        <Canvas Background="Green">
+                            <Button x:Name="ChangeThemeBTN" Click="ChangeThemeBTN_Click" Width="260" Height="80" Content="Change theme" Canvas.Top="300" FontSize="35" Background="Red" />
+                        </Canvas>
+                    </TabItem.Content>
+                </TabItem>
+                <TabItem x:Name="DictionaryTab">
+                    <TabItem.Header>
+                        <TextBlock Margin="8 3 8 3" Text="Dictionary"  FontSize="14"/>
+                    </TabItem.Header>
+                    <TabItem.Content>
+                        <Canvas>
+                            <TextBox Text="Dictionary"  Canvas.Top="10" Width="260" Height="80" />
+                        </Canvas>
+                    </TabItem.Content>
+                </TabItem>
+                <TabItem x:Name="FilesTab">
+                    <TabItem.Header>
+                        <TextBlock Margin="8 3 8 3" Text="Files"  FontSize="14"/>
+                    </TabItem.Header>
+                    <TabItem.Content>
+                        <Canvas>
+                            <TextBox Text="Files" Canvas.Top="10"  Width="260" Height="80"/>
+                        </Canvas>
+                    </TabItem.Content>
+                </TabItem>
+                <TabItem x:Name="OtherTab">
+                    <TabItem.Header>
+                        <TextBlock Text="Other" Margin="8 3 8 3"  FontSize="14"/>
+                    </TabItem.Header>
+                    <TabItem.Content>
+                        <Canvas>
+                            <TextBlock Text="Other" Margin="3"  Width="260" Height="80"/>
+                        </Canvas>
+                    </TabItem.Content>
+                </TabItem>
+            </TabControl>
         </Canvas>
+
         <Canvas x:Name="HistoryPage" Visibility="Hidden">
 
         </Canvas>
-        <Button x:Name="ReturnBTN" Width="100" Height="100" Click="ReturnBTN_Click" Visibility="Hidden">
+        <Button x:Name="ReturnBTN" Width="100" Height="100" Click="ReturnBTN_Click" Visibility="Hidden" Canvas.Top="400">
 
         </Button>
     </Canvas>
