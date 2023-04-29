@@ -21,7 +21,7 @@
                 <Setter Property="FontWeight" Value="Bold"/>
                 <Setter Property="FontFamily" Value="Corbel"/>
             </Style>
-            <Style TargetType="MenuItem">
+            <Style TargetType="Label">
                 <Setter Property="FontWeight" Value="Bold"/>
                 <Setter Property="FontFamily" Value="Corbel"/>
             </Style>
@@ -31,7 +31,7 @@
         <WindowChrome CaptionHeight="0" GlassFrameThickness="0,0,0,1" CornerRadius="0"/>
     </WindowChrome.WindowChrome>
     <Canvas x:Name="Screen" Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=Window}}" Height="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=Window}}">
-        <DockPanel x:Name="TitleBar" Canvas.Right="0" MouseLeftButtonDown="TitleBar_MouseLeftButtonDown" Width="90" Margin="0 5 0 0">
+        <DockPanel x:Name="TitleBar" Canvas.Right="0" MouseLeftButtonDown="TitleBar_MouseLeftButtonDown"  Margin="0 5 0 0">
             <Button x:Name="BTNWinCross" Style="{StaticResource ButtonStyle}" BorderThickness="0"
                     Click="BTNWinCross_Click"
                     DockPanel.Dock="Right">
@@ -150,17 +150,46 @@
             <TabControl x:Name="SettingsMenuTab" SelectionChanged="SettingsMenu_SelectionChanged" Margin="0 5 0 0">
                 <TabItem x:Name="VisualityTab">
                     <TabItem.Header>
-                        <TextBlock Margin="8 3 8 3" Text="Visuality" FontSize="14"/>
+                        <TextBlock  Text="Visuality"  TextAlignment="Center"/>
                     </TabItem.Header>
                     <TabItem.Content>
-                        <Canvas>
-                            <Button x:Name="ChangeThemeBTN" Click="ChangeThemeBTN_Click" Width="260" Height="80" Content="Change theme" Canvas.Top="300" FontSize="35" Background="Red" />
+                        <Canvas x:Name="SettingsVisualityCanvas">
+                            <Grid x:Name="MainGrid" Width="{Binding ElementName=SettingsVisualityCanvas, Path=ActualWidth}" Height="{Binding ElementName=SettingsVisualityCanvas, Path=ActualHeight}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="3*"/>
+                                    <ColumnDefinition Width="5*"/>
+                                    <ColumnDefinition Width="3*"/>
+                                    <ColumnDefinition Width="5*"/>
+                                    <ColumnDefinition Width="3*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <Grid x:Name="ChangeThemeGrid" Grid.Column="3" Grid.Row="0" Background="Red">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Button x:Name="TopButton" Grid.Column="0" Content="Top Button" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    <Label x:Name="CenterLabel" Grid.Column="1" Content="Center Label" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    <Button x:Name="BottomButton" Grid.Column="2" Content="Bottom Button" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Grid>
+                            </Grid>
                         </Canvas>
                     </TabItem.Content>
+
                 </TabItem>
                 <TabItem x:Name="DictionaryTab">
                     <TabItem.Header>
-                        <TextBlock Margin="8 3 8 3" Text="Dictionary"  FontSize="14"/>
+                        <TextBlock Text="Dictionary"  TextAlignment="Center"/>
                     </TabItem.Header>
                     <TabItem.Content>
                         <Canvas>
@@ -170,7 +199,7 @@
                 </TabItem>
                 <TabItem x:Name="FilesTab">
                     <TabItem.Header>
-                        <TextBlock Margin="8 3 8 3" Text="Files"  FontSize="14"/>
+                        <TextBlock  Text="Files"   TextAlignment="Center"/>
                     </TabItem.Header>
                     <TabItem.Content>
                         <Canvas>
@@ -180,7 +209,7 @@
                 </TabItem>
                 <TabItem x:Name="OtherTab">
                     <TabItem.Header>
-                        <TextBlock Text="Other" Margin="8 3 8 3"  FontSize="14"/>
+                        <TextBlock Text="Other" TextAlignment="Center"/>
                     </TabItem.Header>
                     <TabItem.Content>
                         <Canvas>

@@ -57,19 +57,6 @@ namespace MDE_2
             BTNWinSquare.Height = 30;
             BTNWinSquare.Width = 30;
         }
-
-        private void UIElementsInstalling(object? sender, EventArgs e)
-        {
-            if (this.WindowState == WindowState.Maximized)
-            {
-                Width = SystemParameters.WorkArea.Width;
-                Height = SystemParameters.WorkArea.Height;
-                UIElementsInstalling(new object(), null);
-            }
-
-
-        }
-
         private void WinClosing(object? sender, System.ComponentModel.CancelEventArgs e)
         {
             themeCollection.SerializeThemeList();
@@ -78,6 +65,7 @@ namespace MDE_2
         private void UIElementsInstalling(object sender, SizeChangedEventArgs e)
         {
             SetElementSize(MainPage, 1, 1);
+            TitleBar.Width = Width;
             SetElementSize(CenterGrid, 0.24, 0.44);
             SetElementOnPosition(CenterGrid, 0.64, 0);
             SetMarginForElementsInGrid(CenterGrid, 0.1);
@@ -91,28 +79,41 @@ namespace MDE_2
             SetIconsSize(ICN_History);
             SetIconsSize(ICN_Settings);
             SetSettingsMenuTab();
-            Panel.SetZIndex(SettingsPage, -1);
-            Panel.SetZIndex(TitleBar, 1);
+           
 
         }
         private void SetSettingsMenuTab()
         {
-            
+            double headerWidth=0;
             Canvas content = null;
             TabItem item=null;
+            TextBlock header=null;
             try
             {
                 for (int i=0;i<SettingsMenuTab.Items.Count;i++) {
                     item = SettingsMenuTab.Items[i] as TabItem;
+               
                     content =item.Content  as Canvas;
                     content.Width = Width;
-                    content.Height = Height;
+                    content.Height = Height * 0.9;
+                    header=item.Header as TextBlock;
+                    headerWidth += header.Width;
+                    SetElementSize(header, 0.10, 0.05);
+                    header.FontSize= Math.Min(header.Width / 4.8, header.Height)*0.9;
+                   
                 }
             }
             catch (Exception ex) {
                 Reporter.Log("Error: SetSettingsMEnuTab:\n" + ex.Message);
             }
+            if(SettingsPage.Visibility==Visibility.Visible)
+            {
 
+                TitleBar.Width = Width-headerWidth-50;
+                Panel.SetZIndex(SettingsMenuTab, -1);
+                Panel.SetZIndex(TitleBar, 1);
+            }
+            SettingsMenuTab.Background=new SolidColorBrush(Colors.White);
         }
         private void SetElementOnPosition(FrameworkElement control, double verticalMargin, double horizontalMargin)
         {
@@ -204,6 +205,7 @@ namespace MDE_2
             MainPage.Visibility = Visibility.Hidden;
             ReturnBTN.Visibility = Visibility.Visible;
             SettingsPage.Visibility = Visibility.Visible;
+            SetSettingsMenuTab();
         }
 
         private void HistoryBTN_Click(object sender, RoutedEventArgs e)
@@ -221,6 +223,7 @@ namespace MDE_2
             DevelopPage.Visibility = Visibility.Hidden;
             HistoryPage.Visibility = Visibility.Hidden;
             SettingsPage.Visibility = Visibility.Hidden;
+            TitleBar.Width = Width;
         }
 
         private void ChangeThemeBTN_Click(object sender, RoutedEventArgs e)
