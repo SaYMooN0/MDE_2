@@ -49,8 +49,13 @@ namespace MDE_2
             Settings.Deserialize();
             themeCollection = new ThemeCollection();
             Reporter.Log(themeCollection.ToString());
-
             ColorTheElements();
+            BTNWinMinus.Height = 30;
+            BTNWinMinus.Width = 30;
+            BTNWinCross.Height = 30;
+            BTNWinCross.Width = 30;
+            BTNWinSquare.Height = 30;
+            BTNWinSquare.Width = 30;
         }
 
         private void UIElementsInstalling(object? sender, EventArgs e)
@@ -72,7 +77,6 @@ namespace MDE_2
         }
         private void UIElementsInstalling(object sender, SizeChangedEventArgs e)
         {
-            TitleBar.Width = Width - 10;
             SetElementSize(MainPage, 1, 1);
             SetElementSize(CenterGrid, 0.24, 0.44);
             SetElementOnPosition(CenterGrid, 0.64, 0);
@@ -86,20 +90,29 @@ namespace MDE_2
             SetIconsSize(ICN_Develop);
             SetIconsSize(ICN_History);
             SetIconsSize(ICN_Settings);
+            SetSettingsMenuTab();
+            Panel.SetZIndex(SettingsPage, -1);
+            Panel.SetZIndex(TitleBar, 1);
 
         }
-        private void SetSettingsMenu()
+        private void SetSettingsMenuTab()
         {
-            MenuItem element = null;
-            Canvas c = null;
-            for (int i = 0; i < SettingsMenu.Items.Count; i++)
+            
+            Canvas content = null;
+            TabItem item=null;
+            try
             {
-                element = SettingsMenu.Items[i] as MenuItem;
-                c = element.Items[0] as Canvas;
-                c.Height = Height - SettingsMenu.Height;
-                c.Width = Width;
-                c.Background =new SolidColorBrush( Colors.Azure);
+                for (int i=0;i<SettingsMenuTab.Items.Count;i++) {
+                    item = SettingsMenuTab.Items[i] as TabItem;
+                    content =item.Content  as Canvas;
+                    content.Width = Width;
+                    content.Height = Height;
+                }
             }
+            catch (Exception ex) {
+                Reporter.Log("Error: SetSettingsMEnuTab:\n" + ex.Message);
+            }
+
         }
         private void SetElementOnPosition(FrameworkElement control, double verticalMargin, double horizontalMargin)
         {
@@ -171,7 +184,7 @@ namespace MDE_2
             Painter.ColorTheIcon(ICNWinCross, themeCollection.CurrentTheme.MainBorder);
             Painter.ColorTheIcon(ICNWinSquare, themeCollection.CurrentTheme.MainBorder);
             Painter.ColorTheIcon(ICNWinMinus, themeCollection.CurrentTheme.MainBorder);
-            Painter.ColorTheTabMenu(SettingsMenu, themeCollection.CurrentTheme);
+            Painter.ColorTheTabMenu(SettingsMenuTab, themeCollection.CurrentTheme);
             var res = Resources.MergedDictionaries[0];
             res["ButtonPressedBackground"] =themeCollection.CurrentTheme.SecondBorder;
             res["ButtonMouseOverBackground"] =themeCollection.CurrentTheme.SecondBorder;
@@ -230,7 +243,8 @@ namespace MDE_2
             DictionaryTab.Background = Brushes.Transparent;
             FilesTab.Background = Brushes.Transparent;
             OtherTab.Background = Brushes.Transparent;
-            TabItem selectedItem = (TabItem)SettingsMenu.SelectedItem;
+
+            TabItem selectedItem = (TabItem)SettingsMenuTab.SelectedItem;
             selectedItem.Background = themeCollection.CurrentTheme.SecondBackGround;
         }
     }

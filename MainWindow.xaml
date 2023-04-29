@@ -30,8 +30,8 @@
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="0" GlassFrameThickness="0,0,0,1" CornerRadius="0"/>
     </WindowChrome.WindowChrome>
-    <Canvas x:Name="Screen"  Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=Window}}" Height="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=Window}}">
-        <DockPanel x:Name="TitleBar" DockPanel.Dock="Top" MouseLeftButtonDown="TitleBar_MouseLeftButtonDown">
+    <Canvas x:Name="Screen" Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=Window}}" Height="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=Window}}">
+        <DockPanel x:Name="TitleBar" Canvas.Right="0" MouseLeftButtonDown="TitleBar_MouseLeftButtonDown" Width="90" Margin="0 5 0 0">
             <Button x:Name="BTNWinCross" Style="{StaticResource ButtonStyle}" BorderThickness="0"
                     Click="BTNWinCross_Click"
                     DockPanel.Dock="Right">
@@ -147,13 +147,13 @@
 
         </Canvas>
         <Canvas x:Name="SettingsPage" Visibility="Hidden">
-            <TabControl x:Name="SettingsMenu" SelectionChanged="SettingsMenu_SelectionChanged">
+            <TabControl x:Name="SettingsMenuTab" SelectionChanged="SettingsMenu_SelectionChanged" Margin="0 5 0 0">
                 <TabItem x:Name="VisualityTab">
                     <TabItem.Header>
                         <TextBlock Margin="8 3 8 3" Text="Visuality" FontSize="14"/>
                     </TabItem.Header>
                     <TabItem.Content>
-                        <Canvas Background="Green">
+                        <Canvas>
                             <Button x:Name="ChangeThemeBTN" Click="ChangeThemeBTN_Click" Width="260" Height="80" Content="Change theme" Canvas.Top="300" FontSize="35" Background="Red" />
                         </Canvas>
                     </TabItem.Content>
